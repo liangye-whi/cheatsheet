@@ -1,0 +1,170 @@
+\documentclass[10pt,landscape,fleqn]{ctexart}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{bm}
+\newcommand{\brm}[1]{\bm{\mathrm{#1}}}
+\newcommand{\bA}{\brm{A}}
+\newcommand{\bi}{\brm{i}}
+\newcommand{\bj}{\brm{j}}
+\newcommand{\bk}{\brm{k}}
+\newcommand{\be}{\brm{e}}
+\newcommand{\pd}{\partial}
+\setlength{\mathindent}{10pt}
+
+\hypersetup{pdfinfo={
+  /Title (example.pdf)
+  /Creator (TeX)
+  /Producer (pdfTeX 1.40.0)
+  /Author (Seamus)
+  /Subject (Example)
+  /Keywords (pdflatex, latex,pdftex,tex)}}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+    {\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+    }
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\renewcommand\tagform@[1]{}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+%My Environments
+\newtheorem{example}[section]{Example}
+% -----------------------------------------------------------------------
+
+\begin{document}
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+    \Large{\underline{矢量分析与场论}} \footnotesize{12FEB2018}
+\end{center}
+
+\section{原始定义}
+梯度：标量场某一点处增长率最大的方向（向量）\\
+散度：向量场某一点处通量体密度（标量）\\
+旋度：标量场某一点处最大的环量面密度（向量)
+
+\section{矢量场的Jacobi矩阵}
+设$\brm{A}=P\bi+Q\bj+R\bk$，其Jacobi矩阵为
+\begin{equation}
+    D\bA=\dfrac{\pd(P,Q,R)}{\pd(x,y,z)}=\begin{pmatrix}
+    \dfrac{\pd P}{\pd x}&\dfrac{\pd P}{\pd y}&\dfrac{\pd P}{\pd z}\\
+    \dfrac{\pd Q}{\pd x}&\dfrac{\pd Q}{\pd y}&\dfrac{\pd Q}{\pd z}\\
+    \dfrac{\pd R}{\pd x}&\dfrac{\pd R}{\pd y}&\dfrac{\pd R}{\pd z}
+\end{pmatrix}
+\end{equation}
+类似单变量函数的导数。对角元之和为散度，非对角元组合成旋度。
+
+\section{Lam\'e系数与空间元}
+从直角坐标系到任意正交曲线坐标系变换，已知$x,y,z$用新坐标变量的表达，可以求其Lam\'e系数：
+\begin{equation}
+    H_i(q_1,q_2,q_3)=\sqrt{\left(\dfrac{\pd x}{\pd q_i}\right)^2+\left(\dfrac{\pd y}{\pd q_i}\right)^2+\left(\frac{\pd z}{\pd q_i}\right)^2},\ i=1,2,3.
+\end{equation}
+或计算式，先算$x,y,z$用$q_1,q_2,q_3$表示的全微分：
+\begin{equation}
+    (dx)^2+(dy)^x+(dz)^2=H_1^2(dq_1)^2+H_2^2(dq_2)^2+H_3^2(dq_3)^2
+\end{equation}
+曲线弧微分为
+\begin{equation}
+    ds_i=H_idq_i
+\end{equation}
+面积元为
+\begin{equation}
+    dS_{ij}=H_iH_jdq_idq_j
+\end{equation}
+体积元为
+\begin{equation}
+    dV=H_1H_2H_3dq_1dq_2dq_3
+\end{equation}
+柱坐标
+\begin{equation}
+    H_\rho=1,\ H_\phi=\rho,\ H_z=1,\ dV=\rho d\rho d\phi dz
+\end{equation}
+球坐标
+\begin{equation}
+    H_r=1,\ H_\theta=r,\ H_\phi=r\sin\theta,\ dV=r^2\sin\theta drd\theta d\phi
+\end{equation}
+
+\section{基向量导数}
+基向量与其导数正交。
+\begin{align}
+    \frac{\pd\be_1}{\pd q_1}=&-\frac{\be_2}{H_2}\frac{\pd H_1}{\pd q_2}-\frac{\be_3}{H_3}{\pd H_1}{\pd q_3}\\
+    \frac{\pd\be_1}{\pd q_2}=&\frac{\be_2}{H_1}\frac{\pd H_2}{\pd q_1}\\
+    \frac{\pd\be_1}{\pd q_3}=&\frac{\be_3}{H_1}\frac{\pd H_3}{\pd q_1}
+\end{align}
+
+\section{正交曲线坐标系$\nabla$}
+\begin{equation}
+    \nabla=\frac{\be_1}{H_1}\frac{\pd}{\pd q_1}+\frac{\be_2}{H_2}\frac{\pd}{\pd q_2}+\frac{\be_3}{H_3}\frac{\pd}{\pd q_3}
+\end{equation}
+柱坐标
+\begin{align}
+    &\nabla u=\frac{\pd u}{\pd\rho}\be_\rho+\frac{1}{\rho}\frac{\pd u}{\pd \phi}\be_\phi+\frac{\pd u}{\pd z}\be_z\\
+    &\nabla\cdot\bA=\frac{1}{\rho}\frac{\pd\rho A_\rho}{\pd \rho}+\frac{1}{\rho}\frac{\pd A_\phi}{\pd \phi}+\frac{1}{\rho}\frac{\pd\rho A_z}{\pd z}\\
+    &\nabla\times\bA=\left[\frac{1}{\rho}\frac{\pd A_z}{\pd \phi}-\frac{\pd A_\phi}{\pd z}\right]\be_\rho+\left[\frac{\pd A_\rho}{\pd z}-\frac{\pd A_z}{\pd \rho}\right]\be_\phi\nonumber\\
+    &\qquad+\frac{1}{\rho}\left[\frac{\pd \rho A_\phi}{\pd\rho}-\frac{\pd A_\rho}{\pd\phi}\right]\be_z\\
+    &\nabla^2u=\frac{\pd^2u}{\pd\rho^2}+\frac{1}{\rho}\frac{\pd u}{\pd\rho}+\frac{1}{\rho^2}\frac{\pd^2 u}{\pd\phi^2}+\frac{\pd^2u}{\pd z^2}
+\end{align}
+球坐标
+\begin{align}
+    &\nabla u=\frac{\pd u}{\pd r}\be_r+\frac1r\frac{\pd u}{\pd\theta}\be_\theta+\frac1{r\sin\theta}\frac{\pd u}{\pd\phi}\be_\phi\\
+    &\nabla\cdot\bA=\frac1{r^2}\frac{\pd r^2A_r}{\pd r}+\frac{1}{r\sin\theta}\frac{\pd \sin\theta A_\theta}{\pd\theta}+\frac1{r\sin\theta}\frac{\pd A_\phi}{\pd\phi}\\
+    &\nabla\times\bA=\frac{1}{r\sin\theta}\left[\frac{\pd\sin\theta A_\phi}{\pd\theta}-\frac{\pd A_\theta}{\pd \phi}\right]\be_r+\frac1r\left[\frac1{\sin\theta}\frac{\pd A_r}{\pd\phi}-\frac{\pd rA_\phi}{\pd r}\right]\be_\theta\nonumber\\
+    &\qquad+\frac1r\left[\frac{\pd rA_\theta}{\pd r}-\frac{\pd A_r}{\pd\theta}\right]\be_\phi\\
+    &\nabla^2 u=\frac1r\frac{\pd^2ru}{\pd r^2}+\frac{1}{r^2\sin\theta}\dfrac{\pd}{\pd\theta}\left(\sin\theta\frac{\pd u}{\pd\theta}\right)+\frac{1}{r^2\sin^2\theta}\frac{\pd^2u}{\pd\phi}
+\end{align}
+% You can even have references
+%\rule{0.3\linewidth}{0.25pt}
+%\scriptsize
+%\bibliographystyle{abstract}
+%\bibliography{refFile}
+\end{multicols}
+\end{document}
