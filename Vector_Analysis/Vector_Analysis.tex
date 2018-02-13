@@ -136,19 +136,30 @@
 \section{基向量导数}
 基向量与其导数正交。
 \begin{align}
-    \frac{\pd\be_1}{\pd q_1}=&-\frac{\be_2}{H_2}\frac{\pd H_1}{\pd q_2}-\frac{\be_3}{H_3}{\pd H_1}{\pd q_3}\\
-    \frac{\pd\be_1}{\pd q_2}=&\frac{\be_2}{H_1}\frac{\pd H_2}{\pd q_1}\\
-    \frac{\pd\be_1}{\pd q_3}=&\frac{\be_3}{H_1}\frac{\pd H_3}{\pd q_1}
+    \frac{\pd\be_1}{\pd q_1}=&-\frac{\be_2}{H_2}\frac{\pd H_1}{\pd q_2}-\frac{\be_3}{H_3}\frac{\pd H_1}{\pd q_3}\\
+    \frac{\pd\be_1}{\pd q_2}=&\frac{\be_2}{H_1}\frac{\pd H_2}{\pd q_1}\hspace{3em}
+    \frac{\pd\be_1}{\pd q_3}=\frac{\be_3}{H_1}\frac{\pd H_3}{\pd q_1}
+\end{align}
+柱坐标
+\begin{equation}
+    \dfrac{\pd \be_\rho}{\pd \phi} = \be_\phi\quad \dfrac{\pd \be_\phi}{\pd \phi}=-\be_\rho
+\end{equation}
+球坐标
+\begin{align}
+    &\dfrac{\pd \be_r}{\pd \theta} = \be_r\quad \dfrac{\pd \be_r}{\pd \phi}=\be_\phi\sin\theta\\
+    &\dfrac{\pd \be_\theta}{\pd \theta}=-\be_r\quad\dfrac{\pd \be_\theta}{\pd \phi}=\be_\phi\cos\theta\quad \dfrac{\be_\phi}{\pd\phi}=-\be_r\sin\theta-\be_\theta r\cos\theta
 \end{align}
 
 \section{正交曲线坐标系$\nabla$}
 \begin{equation}
     \nabla=\frac{\be_1}{H_1}\frac{\pd}{\pd q_1}+\frac{\be_2}{H_2}\frac{\pd}{\pd q_2}+\frac{\be_3}{H_3}\frac{\pd}{\pd q_3}
 \end{equation}
+先求导再求内积。
+
 柱坐标
 \begin{align}
     &\nabla u=\frac{\pd u}{\pd\rho}\be_\rho+\frac{1}{\rho}\frac{\pd u}{\pd \phi}\be_\phi+\frac{\pd u}{\pd z}\be_z\\
-    &\nabla\cdot\bA=\frac{1}{\rho}\frac{\pd\rho A_\rho}{\pd \rho}+\frac{1}{\rho}\frac{\pd A_\phi}{\pd \phi}+\frac{1}{\rho}\frac{\pd\rho A_z}{\pd z}\\
+    &\nabla\cdot\bA=\frac{1}{\rho}\frac{\pd\rho A_\rho}{\pd \rho}+\frac{1}{\rho}\frac{\pd A_\phi}{\pd \phi}+\frac{\pd A_z}{\pd z}\\
     &\nabla\times\bA=\left[\frac{1}{\rho}\frac{\pd A_z}{\pd \phi}-\frac{\pd A_\phi}{\pd z}\right]\be_\rho+\left[\frac{\pd A_\rho}{\pd z}-\frac{\pd A_z}{\pd \rho}\right]\be_\phi\nonumber\\
     &\qquad+\frac{1}{\rho}\left[\frac{\pd \rho A_\phi}{\pd\rho}-\frac{\pd A_\rho}{\pd\phi}\right]\be_z\\
     &\nabla^2u=\frac{\pd^2u}{\pd\rho^2}+\frac{1}{\rho}\frac{\pd u}{\pd\rho}+\frac{1}{\rho^2}\frac{\pd^2 u}{\pd\phi^2}+\frac{\pd^2u}{\pd z^2}
