@@ -17,12 +17,12 @@
 \setlength{\mathindent}{10pt}
 
 \hypersetup{pdfinfo={
-  /Title (example.pdf)
+  /Title (Vector_Analysis.pdf)
   /Creator (TeX)
-  /Producer (pdfTeX 1.40.0)
-  /Author (Seamus)
-  /Subject (Example)
-  /Keywords (pdflatex, latex,pdftex,tex)}}
+  /Producer (XeLaTeX 1.40.0)
+  /Author (Ye)
+  /Subject (Vector Analysis)
+  /Keywords (vector, analysis, derivatives, gradient)}}
 
 % This sets page margins to .5 inch if using letter paper, and to 1cm
 % if using A4 paper. (This probably isn't strictly necessary.)
@@ -84,7 +84,7 @@
 \setlength{\columnsep}{2pt}
 
 \begin{center}
-    \Large{\underline{矢量分析与场论}} \footnotesize{12FEB2018}
+    \Large{\underline{矢量分析与场论}} \footnotesize{\today}
 \end{center}
 
 \section{原始定义}
@@ -170,7 +170,7 @@
     &\nabla\cdot\bA=\frac1{r^2}\frac{\pd r^2A_r}{\pd r}+\frac{1}{r\sin\theta}\frac{\pd \sin\theta A_\theta}{\pd\theta}+\frac1{r\sin\theta}\frac{\pd A_\phi}{\pd\phi}\\
     &\nabla\times\bA=\frac{1}{r\sin\theta}\left[\frac{\pd\sin\theta A_\phi}{\pd\theta}-\frac{\pd A_\theta}{\pd \phi}\right]\be_r+\frac1r\left[\frac1{\sin\theta}\frac{\pd A_r}{\pd\phi}-\frac{\pd rA_\phi}{\pd r}\right]\be_\theta\nonumber\\
     &\qquad+\frac1r\left[\frac{\pd rA_\theta}{\pd r}-\frac{\pd A_r}{\pd\theta}\right]\be_\phi\\
-    &\nabla^2 u=\frac1r\frac{\pd^2ru}{\pd r^2}+\frac{1}{r^2\sin\theta}\dfrac{\pd}{\pd\theta}\left(\sin\theta\frac{\pd u}{\pd\theta}\right)+\frac{1}{r^2\sin^2\theta}\frac{\pd^2u}{\pd\phi}
+    &\nabla^2 u=\frac1{r^2}\frac{\pd}{\pd r}r^2\frac{\pd u}{\pd r}+\frac{1}{r^2\sin\theta}\dfrac{\pd}{\pd\theta}\left(\sin\theta\frac{\pd u}{\pd\theta}\right)+\frac{1}{r^2\sin^2\theta}\frac{\pd^2u}{\pd\phi}
 \end{align}
 % You can even have references
 %\rule{0.3\linewidth}{0.25pt}
